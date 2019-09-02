@@ -77,7 +77,11 @@
             </form>
         </div>
         @if($data)
-            {{ $data }}
+            <div>
+                <label>tc</label> : {{ $data->tc }}
+            </div><div>
+                <label>resim</label> : <img src="{{ $data->image }}" height="100">
+            </div>
         @elseif($data === false)
             Bulunamadı.
         @endif
