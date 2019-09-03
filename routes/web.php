@@ -10,17 +10,13 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use TCG\Voyager\Facades\Voyager;
 
-Route::get('/', 'SearchController@index')->name('search');
-Route::post('/search', 'SearchController@index')->name('searchReport');
+//Route::get('/', 'SearchController@index')->name('search');
+//Route::post('/search', 'SearchController@index')->name('searchReport');
 
-Auth::routes();
-
-Route::prefix('admin')->middleware('auth')->group(function (){
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::resource('drone-users','DroneUserController')->name('DroneUsers','drone-users');
-
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
 });
