@@ -12,4 +12,19 @@ class DroneUser extends Model
             'tc'    => 'text',
             'image' => 'text',
         ];
+
+    public function getTcAttribute($va)
+    {
+        return $va;
+    }
+
+    public static function getTableAttributes()
+    {
+        return array_keys(app(static::class)->tableAttributes);
+    }
+
+    public function getImageAttribute($value)
+    {
+        return 'storage/images/' . $this->id . '-' . $this->tc . '.jpg';
+    }
 }
